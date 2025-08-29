@@ -31,7 +31,7 @@ public class WebhookService {
     public Mono<String> submitSolution(String webhookUrl, String accessToken, SolutionRequest solution) {
         return webClient.post()
                 .uri(webhookUrl)
-                .header(HttpHeaders.AUTHORIZATION, accessToken)
+                .header(HttpHeaders.AUTHORIZATION, "Bearer " + accessToken)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
                 .bodyValue(solution)
                 .retrieve()
